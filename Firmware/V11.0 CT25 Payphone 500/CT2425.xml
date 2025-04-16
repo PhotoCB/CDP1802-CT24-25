@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<emmaconfig>
+  <system>
+    <name>CT2425 Payphone</name>
+    <config>V11.0 CT24</config>
+    <clock>2.00</clock>
+    <cpu>1802</cpu>
+    <boot>0x0000</boot>
+    <init type="ef1">1</init>
+    <init type="ef2">1</init>
+    <init type="ef3">1</init>
+    <init type="ef4">1</init>
+    <dirname>CT2425</dirname>
+    <int>2000</int>
+  </system>
+  <splash>
+    <text>Press return to set baud rate and start Utility Program UT4..
+
+UT4 Commands:
+?Mx y - Show memory location starting at x and showing 3 addresses
+!Mx y - Store byte string y at location x
+$Px - Start execution at address x
+</text>
+  </splash>
+  <frontpanel init="on">
+    <size>610, 380</size>
+	<in>5</in>
+	<out>5</out>
+	  
+    <item>
+      <type>switch</type>
+      <function>bitswitch</function>
+	  <value>7</value>
+      <init>down</init>
+      <pos>20, 250</pos>
+    </item>
+	  <item>
+		  <type>switch</type>
+		  <function>bitswitch</function>
+		  <value>6</value>
+		  <init>up</init>
+		  <pos>45, 250</pos>
+	  </item>
+	  <item>
+		  <type>switch</type>
+		  <function>bitswitch</function>
+		  <value>5</value>
+		  <init>down</init>
+		  <pos>70, 250</pos>
+	  </item>
+	  <item>
+		  <type>switch</type>
+		  <function>bitswitch</function>
+		  <value>4</value>
+		  <init>up</init>
+		  <pos>95, 250</pos>
+	  </item>
+	  <item>
+		  <type>switch</type>
+		  <function>bitswitch</function>
+		  <value>3</value>
+		  <init>down</init>
+		  <pos>120, 250</pos>
+	  </item>
+	  <item>
+		  <type>switch</type>
+		  <function>bitswitch</function>
+		  <value>2</value>
+		  <init>up</init>
+		  <pos>145, 250</pos>
+	  </item>
+	  <item>
+		  <type>switch</type>
+		  <function>bitswitch</function>
+		  <value>1</value>
+		  <init>down</init>
+		  <pos>170, 250</pos>
+	  </item>
+	  <item>
+		  <type>switch</type>
+		  <function>bitswitch</function>
+		  <value>0</value>
+		  <init>up</init>
+		  <pos>195, 250</pos>
+	  </item>
+    <item>
+      <type size="small">push</type>
+      <function type="full">reset</function>
+      <label></label>
+      <pos>70, 30</pos>
+      <size>25, 25</size>
+    </item>
+    <item>
+      <type>text</type>
+      <label size="12">RESET</label>
+      <pos>60, 8</pos>
+    </item>
+    <item>
+      <type size="small">push</type>
+      <function type="reset">run0</function>
+      <label>P</label>
+      <pos>130, 30</pos>
+      <size>25, 25</size>
+    </item>
+    <item>
+      <type>text</type>
+      <label size="12">RUN</label>
+      <pos>126, 8</pos>
+    </item>
+    <item>
+      <type size="small">push</type>
+      <function type="reset">run</function>
+      <label>U</label>
+      <pos>190, 30</pos>
+      <size>25, 25</size>
+    </item>
+    <item>
+      <type>text</type>
+      <label size="12">RUN</label>
+      <pos>186, 8</pos>
+    </item>
+
+    <item>
+      <type>text</type>
+      <label size="12">STEP</label>
+      <pos>10, 8</pos>
+    </item>
+    <item>
+      <type>text</type>
+      <label size="12">PORT</label>
+      <pos>30, 62</pos>
+    </item>
+    <item>
+      <type>text</type>
+      <label size="12">5</label>
+      <pos>100, 62</pos>
+    </item>
+    <item>
+      <type color="grey">text</type>
+      <label size="12">0</label>
+      <pos>133, 92</pos>
+    </item>
+    <item>
+      <type>led</type>
+      <value>0</value>
+      <function load="show">bitled</function>
+      <pos>133, 80</pos>
+    </item>
+    <item>
+      <type color="grey">text</type>
+      <label size="12">1</label>
+      <pos>116, 92</pos>
+    </item>
+    <item>
+      <type>led</type>
+      <value>1</value>
+      <function load="show">bitled</function>
+      <pos>116, 80</pos>
+    </item>
+    <item>
+      <type color="grey">text</type>
+      <label size="12">2</label>
+      <pos>99, 92</pos>
+    </item>
+    <item>
+      <type>led</type>
+      <value>2</value>
+      <function load="show">bitled</function>
+      <pos>99, 80</pos>
+    </item>
+    <item>
+      <type color="grey">text</type>
+      <label size="12">3</label>
+      <pos>82, 92</pos>
+    </item>
+    <item>
+      <type>led</type>
+      <value>3</value>
+      <function load="show">bitled</function>
+      <pos>82, 80</pos>
+    </item>
+    <item>
+      <type color="grey">text</type>
+      <label size="12">4</label>
+      <pos>65, 92</pos>
+    </item>
+    <item>
+      <type>led</type>
+      <value>4</value>
+      <function load="show">bitled</function>
+      <pos>65, 80</pos>
+    </item>
+    <item>
+      <type color="grey">text</type>
+      <label size="12">5</label>
+      <pos>48, 92</pos>
+    </item>
+    <item>
+      <type>led</type>
+      <value>5</value>
+      <function load="show">bitled</function>
+      <pos>48, 80</pos>
+    </item>
+    <item>
+      <type color="grey">text</type>
+      <label size="12">6</label>
+      <pos>31, 92</pos>
+    </item>
+    <item>
+      <type>led</type>
+      <value>6</value>
+      <function load="show">bitled</function>
+      <pos>31, 80</pos>
+    </item>
+    <item>
+      <type color="grey">text</type>
+      <label size="12">7</label>
+      <pos>14, 92</pos>
+    </item>
+    <item>
+      <type>led</type>
+      <value>7</value>
+      <function load="show">bitled</function>
+      <pos>14, 80</pos>
+    </item>
+    <item>
+      <type color="grey">text</type>
+      <label size="12">SC1</label>
+      <pos>150, 92</pos>
+    </item>
+
+  </frontpanel>
+  <memory>
+    <ram type="gui" mask="0x3ff">
+      <start>0x8000</start>
+      <end>0xFFFF</end>
+    </ram>
+    <rampart start="0x8c00" end="0x8c1F"></rampart>
+    <rom type="gui">
+      <start>0x0000</start>
+      <end>0x6FFF</end>
+      <pulldown mask="*.bin">CT2425</pulldown>
+      <filename verify="true">V11.0.bin</filename>
+    </rom>
+  </memory>
+  <vt p2:type="vt100" connection="serial" bits="7" xmlns:p2="http://www.w3.org/2001/XMLSchema-instance">
+    <font>vt100.bin</font>
+    <ef>1</ef>
+    <q></q>
+    <caps />
+    <baud type="receive">1200</baud>
+    <baud type="transmit">1200</baud>
+    <border>0x0</border>
+    <color type="fore">0, 255, 0</color>
+    <color type="back">0, 0x40, 0</color>
+    <color type="high">0, 0xff, 0</color>
+  </vt>
+  <hexmodem></hexmodem>
+  <debugger>
+    <scrt mode="off">
+      <call reg="4">-1</call>
+      <return reg="5">-1</return>
+    </scrt>
+    <assembler>
+      <filename>mycode.bin</filename>
+      <code_start>0</code_start>
+      <code_end>0xFFF</code_end>
+    </assembler>
+  </debugger>
+</emmaconfig>
