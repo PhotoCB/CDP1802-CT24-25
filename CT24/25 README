@@ -1,0 +1,110 @@
+The circuits and firmware archived here are derived from two sets of CT24/25 PCBs. One set came from
+a CT25A that was used as a sales demonstration set in the Kent area, possibly Maidstone. This
+phone dates to January 1987. Most parts are dated 1986 but the Line Interface PCB, the smaller
+of the two main PCBs, is older, dating to 1984 and thus may have replaced the original.
+
+The second phone was a public phone from Jersey. Strictly speacking it is not a CT24 as it was
+not a BT phone. Comparisions with others show that in fact, other than a mildly different 
+Sensor 5 assembly, it is identical to a BT CT24 in all but name and the logo on the keypad 
+finger plate. It is also complete with cash box assembly and on a backboard that photo reference
+shows was used on a V-shaped open booth on Jersey in the 1990s. This phone appears to date to 1989.
+
+It may well have been taken out of service due to a vandalised display. The glass can be replaced,
+most easily with a polycarbonate window which, documents from 1986 show, was an official BT spare
+part. However, the LCD display was damaged beyond use. I am still looking for a replacement.
+
+This phone came with its battery, which creates significant problems due to leakage. The leaked
+liquid drops down onto the lower edge of the processor, especially on to the connector and cable to 
+the Line Interface PCB below. I have had to replace the flat multiway cable between the two PCBs and
+bypass one of the pins on the PCB connector. Despite that the Processor and Line Interface PCBs appear
+to work. Though there is still an issue with instability on the Line Interface.
+
+This phone was not fully operational when I received it, and may well never have been. It 
+clearly had been wired to a phone line but may never have been used outside of the "999 Calls Only"
+state. While it was a seemingly complete set, on a proper backboard and with a cash box, even with
+a cash container inside, there was no cable connecting the processor to the cash box and "Sensor 5"
+which should have been in the chute connecting the phone to the cash box assembly below. I made 
+a new cable to replace the missing one.
+
+Beside the missing cable, another, connecting the coin validator to the processor pcb was damaged.
+At first I thought it may have been damaged by getting caught in the door closing and locking mechanism.
+However, after repairing the cable I found the phone drained the internal battery very quickly. Suspiciously, 
+The damaged wires were the power and ground to the validator. Maybe the damage was deliberate. The
+root cause of the problem turned out to be a damaged connector on the the processor PCB through which the
+coin handling solenoids were connected. The damaged allowed the cable connector to be put in the wrong way
+which resulted in in low resistance paths that drained the battery. Sorting out the cabling allowed the
+coin validator and runways to work mostly correctly.
+
+There was no battery in this phone when I received it, and no sign of any corrosion on the battery holder or
+anywhere else. It is highly likely that no battery was fitted when this phone was in use as a demonstrator.
+I fitted a NiMH 6V battery intended for use in alarm systems which was the same diameter as the original NiCd Battery
+Secondary 35 and clips into the existing battery holder. It even had tails with a compatible connector that 
+plugs straight into the board. This has so far been a totaly successful replacement, providing over two weeks of
+battery RAM retention. 
+
+I managed to get hold of a BT Tester 297C, seemingly little used and still in its original box. I hoped to use this
+to sete up the RAM tarriff and reporting configuration - a vital step in getting the phone out of "999 Calls Only" 
+mode and operation. However, while the tester appeared to work, the phone refused to recognise the config 
+downloade to it. This was the point at which I decided I needed to get to the bottom of this by reverse engineering
+the circuits of the phone and tester to find out how this this ticked and what, if any, secrets it they held.
+
+The main thrust of my reverse engineering was to find what components did what. I also hoped to be able to disassemble
+and, if possible, simulate the firmware on a PC. One thing I wanted to know was why was my tester not loading the
+configuration? Were there, for example, firmware compatibility issues between my tester 297C and my phone's firmware.
+
+That leads on to the question of what, exactly, is the phone's firmware. Well, I have to mid-production phones. It is
+clear the firmware in both Ct24s and 25s was the same -the EPROMs are labelled as such. Essentially Any difference in 
+functionality between Call Office (i.e. CT24/kiosk) use and renter's (i.e. CT25) is a result of configuration via the
+Tester 297. While the PCBs have differences in components - the CT24 PCBs had more ceramic cased ICs and were more 
+likely to be conformally coated- they and the firmware are interchangable between CT24s and 25s in service at the same
+time.
+
+The CT24/25 are "powered" as we say today, by the RCA COSMAC CDP1802 processor. This is a quirky, slow (even for the time) 
+but versatile mid-70s microprocessor well suited to low power embedded applications such as payphone control. It has a 
+64kbyte address range similar to other 8-bit processors of the era. In the CT24/25 the lower 28K of address space is
+wired for EPROMS - just 14K on early processor PCBS using 2K byte 27C16 EPROMS but linkable for 4K byte 27C32 EPROMS.
+All the, admittedly few, PCBs I have seen are set for 27C32 EPROMs. The next 4K is unusable. From 32k upwards is 1K byte 
+of battery backed static RAM mirrored all the way to the end of memory.
+
+This is where Hywel Clatworthy came in. He also has two CT24/35 processor PCBs. He also has a Tester 297E which he has used
+reportedly suceesfully to configure one of his phones. WOrking together, he has provided me with dumps of his firmware and
+that of his tester 297C. 
+
+The tester 297 was first developed to support the production CT22Bs - the original Blue Payphone. The CT22A had used the 
+Intel 4040, whereas the production phones, the substantially more numerous CT22Bs, used the CDP1802. The orginal tester 297,
+later known as the 297A, had its own 1802 and corresponding firmware and was developed by AGI, who were one half of the AGITELCO
+joint venture with the Swiss developers of the phone, AUTELCA. It appears that the GPO was keen to use the same tester to configure
+the CT22s successor, the Ct24/25 Blue Payphone 2.
+
+The earliest issue/version (issue appears to have been used at first, changing to version later) of firmware I have so far had
+access to or awareness of is Issue 4. This is shorter than all later firmware issues that I currently know of, fitting into 
+three 27C32s, i.e. 12K bytes. My CT25 has V11.0 firmware: six 27C32 EPROMs, i.e. twice the size of Issue 4: 24K bytes. My
+Jersey "CT24" has V12.1, again six 27C32 EPROMs. Hywel has a processor loaded with V15 firmware, also six 27C32s.
+
+For reasons as yet unknown, the tester was updated twice: to 297C, the model I have, and later to 297E which is the version Hywell 
+has. I have determined that the hardware differences between the C and E are very minor. The only differences being the front panel
+label and most significantly the firmware. My 297C is loaded with Issue 3 firmware and Hywel's 297E has Issue 8... or is it? The 
+EPROM is th only one of all the firmware EPROMs available to us so far to have human readable identifiying/versioning strings and
+they state its Issue *7* despite being labelled Issue 8. We do not know the reason for this discrepancy.
+
+It has become clear that there were several changes in specifcation and functionality during the lifetime of these phones. One
+thing to have changed was the coins, several of which were replaced by smaller versions during the service lifetime of the CT24/25.
+We beleive there are at least two versions of the coin validator, each compatible with different versions of phone firmware. I
+now know that 297E tester firmware is not backwards compatible with that in the 297C which in turn may well have not been compatible
+with the 297/297A. The configuration data in the 297E is at least twice as long as that in the 297C, and even the way it sends
+reporting numbers appears incompatible. So, to get a CT24/25 working you have to have the right, compatible, version of the Tester 297.
+As yet it is unclear which Tester works with which firmware. So far Ive not seen anywhere near enough firmware version to be able to
+determine compatibilty and have not seen any documents that address this issue. If you have a CT24/25 with anything other than 
+Issue/Versions 4, 11, 12 or 15 I'd love to get my hands on your EPROMS, so to speak.
+
+Another thing to be aware of is that the CT24/25 was followed by several updated phone models which look very similar to the CT24/25, 
+so much so that it is can be difficult to tell them apart. These all used the same CDP1802 processer but had larger EPROMS. These include 
+the CT34 - which appears to have been effectively a CT24/25 Mk2 with a single large PCB with 27C64 EPROMs and integrated the functions
+of the three PCBs of the CT24/25. Then there was the CT44 and CT54, by which time the display had become a much more versatile backlit
+dot matrix type and the much squarer/angular black handset had been introduced. I have yet to track all the differences of phone models.
+
+The biggest hurdle, though by no means the only one, to getting these iconic payphones to work, is that the Tester 297s are now very rare.
+Our intent is to emulate the various Tester 297 variants with a PC or smartphone app making getting your CT24/25, and possibly its later
+siblings, the CT34, 44 and 54, that bit easier to get working.
+
+Chris Boyce, 19th May 2025.
